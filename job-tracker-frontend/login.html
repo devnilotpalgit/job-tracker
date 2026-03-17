@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTracker Login</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="glass-card animate-fade-in" style="width: 100%; max-width: 400px; padding: 2.5rem;">
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <h1 class="text-gradient" style="font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: -0.025em;">Welcome Back</h1>
+          <p class="text-muted text-sm">Sign in to your JobTracker account</p>
+        </div>
+
+        <div class="form-group delay-1 animate-fade-in">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group delay-2 animate-fade-in" style="margin-bottom: 2rem;">
+          <label for="password" class="form-label">Password</label>
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <button
+          onclick="login()"
+          class="btn btn-primary delay-3 animate-fade-in"
+        >
+          Sign In
+        </button>
+        
+        <div class="delay-3 animate-fade-in" style="margin-top: 2rem; text-align: center;">
+          <p class="text-muted text-sm">Don't have an account? <a href="register.html" class="text-gradient hover:opacity-80 transition" style="text-decoration: none; font-weight: 500;">Register Here</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+      document.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+              login();
+          }
+      });
+    </script>
+  </body>
+</html>

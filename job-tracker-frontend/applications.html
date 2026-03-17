@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobTracker Applications</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="app-layout">
+
+      <aside class="sidebar glass-panel">
+        <div class="brand">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="url(#paint0_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+              <linearGradient id="paint0_linear" x1="3" y1="2" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#3b82f6"/>
+                <stop offset="1" stop-color="#8b5cf6"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="text-gradient hover:opacity-80 transition" style="cursor: pointer;">JobTracker</span>
+        </div>
+
+        <nav class="nav-menu delay-1 animate-fade-in">
+          <a href="dashboard.html" class="nav-item">
+            Dashboard
+          </a>
+          <a href="applications.html" class="nav-item active">
+            Applications
+          </a>
+          
+          <div style="flex-grow: 1;"></div>
+          
+          <button onclick="logout()" class="nav-item" style="color: var(--status-rejected); margin-top: auto;">
+            Log Out Exit
+          </button>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="mb-8 delay-1 animate-fade-in flex justify-between items-center">
+          <div>
+            <h1 class="text-3xl mb-1">Applications</h1>
+            <p class="text-muted">Track and manage your job hunts.</p>
+          </div>
+          
+          <button onclick="openModal()" class="btn btn-primary" style="width: auto;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
+              <path d="M12 5v14m-7-7h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            Add Application
+          </button>
+        </header>
+
+        <div class="data-table-container glass-card delay-2 animate-fade-in">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsTable">
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <div id="modal" class="modal-overlay">
+      <div class="glass-card modal-content border border-gray-800">
+        <div class="modal-header">
+          <h2 class="text-xl">Add Application</h2>
+          <button onclick="closeModal()" class="close-btn">&times;</button>
+        </div>
+
+        <div class="form-group">
+          <label for="company" class="form-label">Company Name</label>
+          <input id="company" type="text" placeholder="e.g. Google" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="title" class="form-label">Job Title</label>
+          <input id="title" type="text" placeholder="e.g. Software Engineer" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="location" class="form-label">Location (Optional)</label>
+          <input id="location" type="text" placeholder="e.g. Remote, San Francisco" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="appDate" class="form-label">Date</label>
+          <input id="appDate" type="date" class="form-input" required />
+        </div>
+
+        <div class="form-group mb-6">
+          <label for="status" class="form-label">Initial Status</label>
+          <select id="status" class="form-input" style="appearance: none;">
+            <option value="APPLIED">Applied</option>
+            <option value="INTERVIEW">Interviewing</option>
+            <option value="OFFER">Offer</option>
+            <option value="REJECTED">Rejected</option>
+          </select>
+        </div>
+
+        <div class="modal-footer">
+          <button onclick="closeModal()" class="btn btn-ghost">Cancel</button>
+          <button onclick="addApplication()" class="btn btn-primary">Save Application</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/applications.js"></script>
+  </body>
+</html>
